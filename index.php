@@ -45,13 +45,16 @@ echo $max_id.'<br>';
 //print_r($values);
 echo "------------------------------------New query-------------------------------";
 echo '<br>';
+echo "we will load more results in the new query by getting the max id form previous result";
+echo '<br>';
 //new qursy after the last one
 $getfield .='&max_id='.$max_id;
-echo "get fiels is" .$getfield.'<br>';
+echo "get fields is" .$getfield.'<br>';
 $new_results=$twitter->setGetfield($getfield)
              ->buildOauth($url, $requestMethod)
              ->performRequest();
 //print_r(json_decode($new_results,JSON_PRETTY_PRINT));
 $new_values = json_decode($new_results);
 $count = count($values->statuses) + count($new_values->statuses);
-echo $count;
+echo "<br>";
+echo "Total tweets for two queries are : " . $count;
